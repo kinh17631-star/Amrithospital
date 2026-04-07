@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer";
 
 export default function Appointment() {
 
@@ -26,7 +27,6 @@ export default function Appointment() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // validation
     if (!form.name || !form.phone || !form.date) {
       setError("Please fill all required fields");
       setSuccess("");
@@ -39,11 +39,9 @@ export default function Appointment() {
       return;
     }
 
-    // success
     setError("");
     setSuccess("Appointment booked successfully!");
 
-    // reset form
     setForm({
       name: "",
       phone: "",
@@ -62,7 +60,6 @@ export default function Appointment() {
       <Navbar />
       <Sidebar />
 
-      {/* HERO */}
       <section style={{
         background: "linear-gradient(135deg,#0d6efd,#4facfe)",
         color: "white",
@@ -73,7 +70,6 @@ export default function Appointment() {
         <p>Quick and easy appointment booking</p>
       </section>
 
-      {/* FORM SECTION */}
       <section style={{
         padding: "60px 20px",
         display: "flex",
@@ -92,7 +88,6 @@ export default function Appointment() {
             Appointment Form
           </h2>
 
-          {/* NAME */}
           <input
             type="text"
             name="name"
@@ -102,7 +97,6 @@ export default function Appointment() {
             style={input}
           />
 
-          {/* PHONE */}
           <input
             type="number"
             name="phone"
@@ -112,7 +106,6 @@ export default function Appointment() {
             style={input}
           />
 
-          {/* DATE */}
           <input
             type="date"
             name="date"
@@ -121,7 +114,6 @@ export default function Appointment() {
             style={input}
           />
 
-          {/* DEPARTMENT */}
           <select
             name="department"
             value={form.department}
@@ -135,7 +127,6 @@ export default function Appointment() {
             <option>Pediatrics</option>
           </select>
 
-          {/* MESSAGE */}
           <textarea
             name="message"
             placeholder="Message (optional)"
@@ -144,13 +135,9 @@ export default function Appointment() {
             style={{ ...input, height: "80px" }}
           ></textarea>
 
-          {/* ERROR */}
           {error && <p style={{ color: "red" }}>{error}</p>}
-
-          {/* SUCCESS */}
           {success && <p style={{ color: "green" }}>{success}</p>}
 
-          {/* BUTTON */}
           <button type="submit" style={btn}>
             Submit
           </button>
@@ -158,7 +145,6 @@ export default function Appointment() {
         </form>
       </section>
 
-      {/* CTA */}
       <section style={{
         background: "#0d6efd",
         color: "white",
@@ -169,16 +155,7 @@ export default function Appointment() {
         <p>Call us directly for emergency services</p>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "white",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
-      </footer>
+      <Footer />
     </>
   );
 }
