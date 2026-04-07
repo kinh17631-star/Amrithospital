@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer";
 
 export default function Patients() {
 
@@ -31,7 +32,6 @@ export default function Patients() {
       <Navbar />
       <Sidebar />
 
-      {/* HERO HEADER */}
       <section style={{
         background: "linear-gradient(135deg,#0d6efd,#4facfe)",
         color: "white",
@@ -42,7 +42,6 @@ export default function Patients() {
         <p>Providing quality healthcare with compassion</p>
       </section>
 
-      {/* SERVICES SECTION */}
       <section style={{ padding: "60px 20px" }}>
         <h2 style={title}>Our Services</h2>
 
@@ -58,7 +57,6 @@ export default function Patients() {
         </div>
       </section>
 
-      {/* FACILITIES SECTION */}
       <section style={{ padding: "60px 20px", background: "#f9fbff" }}>
         <h2 style={title}>Hospital Facilities</h2>
 
@@ -74,7 +72,6 @@ export default function Patients() {
         </div>
       </section>
 
-      {/* PATIENT INFO */}
       <section style={{ padding: "60px 20px" }}>
         <h2 style={title}>Patient Information</h2>
 
@@ -92,7 +89,6 @@ export default function Patients() {
         </div>
       </section>
 
-      {/* FAQ SECTION */}
       <section style={{ padding: "60px 20px", background: "#f9fbff" }}>
         <h2 style={title}>Frequently Asked Questions</h2>
 
@@ -108,7 +104,6 @@ export default function Patients() {
         </div>
       </section>
 
-      {/* CTA */}
       <section style={{
         background: "#0d6efd",
         color: "white",
@@ -123,16 +118,7 @@ export default function Patients() {
         </a>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "white",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
-      </footer>
+      <Footer />
     </>
   );
 }
@@ -161,9 +147,8 @@ const btnLight = {
   padding: "12px 25px",
   background: "white",
   color: "#0d6efd",
-  borderRadius: "10px",
   border: "none",
+  borderRadius: "10px",
   marginTop: "15px",
-  fontWeight: "bold",
   cursor: "pointer"
 };
