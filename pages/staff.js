@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer";
 
 export default function Staff() {
 
@@ -30,7 +31,6 @@ export default function Staff() {
       <Navbar />
       <Sidebar />
 
-      {/* HERO HEADER */}
       <section style={{
         background: "linear-gradient(135deg,#0d6efd,#4facfe)",
         color: "white",
@@ -41,7 +41,6 @@ export default function Staff() {
         <p>Experienced professionals committed to your care</p>
       </section>
 
-      {/* STAFF GRID */}
       <section style={{
         padding: "60px 20px",
         display: "grid",
@@ -50,8 +49,6 @@ export default function Staff() {
       }}>
         {staff.map((member, i) => (
           <div key={i} style={card}>
-            
-            {/* IMAGE PLACEHOLDER */}
             <div style={{
               height: "150px",
               background: "#eaeaea",
@@ -71,7 +68,6 @@ export default function Staff() {
         ))}
       </section>
 
-      {/* VALUES SECTION */}
       <section style={{
         padding: "60px 20px",
         background: "#f9fbff"
@@ -94,7 +90,6 @@ export default function Staff() {
         </div>
       </section>
 
-      {/* CTA */}
       <section style={{
         background: "#0d6efd",
         color: "white",
@@ -109,16 +104,7 @@ export default function Staff() {
         </button>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "white",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
-      </footer>
+      <Footer />
     </>
   );
 }
@@ -141,9 +127,8 @@ const btnLight = {
   padding: "12px 25px",
   background: "white",
   color: "#0d6efd",
-  borderRadius: "10px",
   border: "none",
+  borderRadius: "10px",
   marginTop: "15px",
-  fontWeight: "bold",
   cursor: "pointer"
 };
