@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer";
 
 export default function PrivacyPolicy() {
   return (
@@ -12,7 +13,6 @@ export default function PrivacyPolicy() {
       <Navbar />
       <Sidebar />
 
-      {/* HEADER */}
       <section style={{
         background: "linear-gradient(135deg,#0d6efd,#4facfe)",
         color: "white",
@@ -23,7 +23,6 @@ export default function PrivacyPolicy() {
         <p>Your data safety is our priority</p>
       </section>
 
-      {/* CONTENT */}
       <section style={{
         padding: "40px 20px",
         maxWidth: "900px",
@@ -79,16 +78,7 @@ export default function PrivacyPolicy() {
 
       </section>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "white",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
-      </footer>
+      <Footer />
     </>
   );
 }
