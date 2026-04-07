@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer";
 
 export default function Doctors() {
 
@@ -16,7 +17,6 @@ export default function Doctors() {
     { name: "Dr. Ravi Kumar", spec: "General Physician", exp: "15 Years Experience" }
   ];
 
-  // filter doctors
   const filteredDoctors = doctors.filter((doc) =>
     doc.name.toLowerCase().includes(search.toLowerCase()) ||
     doc.spec.toLowerCase().includes(search.toLowerCase())
@@ -31,7 +31,6 @@ export default function Doctors() {
       <Navbar />
       <Sidebar />
 
-      {/* HERO HEADER */}
       <section style={{
         background: "linear-gradient(135deg,#0d6efd,#4facfe)",
         color: "white",
@@ -42,7 +41,6 @@ export default function Doctors() {
         <p>Highly qualified specialists for your care</p>
       </section>
 
-      {/* SEARCH BAR */}
       <section style={{
         padding: "40px 20px",
         textAlign: "center"
@@ -62,7 +60,6 @@ export default function Doctors() {
         />
       </section>
 
-      {/* DOCTORS GRID */}
       <section style={{
         padding: "20px",
         display: "grid",
@@ -72,8 +69,6 @@ export default function Doctors() {
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map((doc, i) => (
             <div key={i} style={card}>
-              
-              {/* IMAGE PLACEHOLDER */}
               <div style={{
                 height: "150px",
                 background: "#eaeaea",
@@ -90,7 +85,6 @@ export default function Doctors() {
               <button style={btn}>
                 Book Appointment
               </button>
-
             </div>
           ))
         ) : (
@@ -100,7 +94,6 @@ export default function Doctors() {
         )}
       </section>
 
-      {/* CTA */}
       <section style={{
         background: "#0d6efd",
         color: "white",
@@ -114,28 +107,16 @@ export default function Doctors() {
         </a>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{
-        background: "#111",
-        color: "white",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
-      </footer>
+      <Footer />
     </>
   );
 }
-
-/* STYLES */
 
 const card = {
   background: "white",
   padding: "20px",
   borderRadius: "15px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-  transition: "0.3s"
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
 };
 
 const btn = {
