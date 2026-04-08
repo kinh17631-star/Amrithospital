@@ -34,9 +34,8 @@ export default function Services() {
 
       <div style={grid}>
         {services.map((item, i) => (
-          <div key={i} style={card}>
+          <div key={i} style={card} className="card-hover fade-up">
 
-            {/* ICON */}
             <div style={icon}>🏥</div>
 
             <h3 style={title}>{item.title}</h3>
