@@ -1,34 +1,16 @@
 export default function Services() {
 
   const services = [
-    {
-      title: "Cardiology",
-      desc: "Heart related treatments with advanced technology."
-    },
-    {
-      title: "Neurology",
-      desc: "Brain and nerve system specialist doctors."
-    },
-    {
-      title: "Orthopedics",
-      desc: "Bone and joint care with expert surgeons."
-    },
-    {
-      title: "Pediatrics",
-      desc: "Complete healthcare for children."
-    },
-    {
-      title: "Emergency Care",
-      desc: "24/7 emergency support available."
-    },
-    {
-      title: "Laboratory",
-      desc: "Accurate and fast testing services."
-    }
+    { title: "Cardiology", desc: "Heart related treatments with advanced technology." },
+    { title: "Neurology", desc: "Brain and nerve system specialist doctors." },
+    { title: "Orthopedics", desc: "Bone and joint care with expert surgeons." },
+    { title: "Pediatrics", desc: "Complete healthcare for children." },
+    { title: "Emergency Care", desc: "24/7 emergency support available." },
+    { title: "Laboratory", desc: "Accurate and fast testing services." }
   ];
 
   return (
-    <section style={container}>
+    <section style={container} className="fade-up">
 
       <h2 style={heading}>Our Services</h2>
 
@@ -75,8 +57,7 @@ const card = {
   padding: "25px",
   borderRadius: "15px",
   textAlign: "center",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-  transition: "0.3s"
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
 };
 
 const icon = {
