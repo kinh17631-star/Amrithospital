@@ -1,60 +1,82 @@
+import { useState } from "react";
+
 export default function Sidebar() {
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <div style={container}>
+    <>
+      {/* HAMBURGER BUTTON */}
+      <div style={hamburger} onClick={() => setOpen(!open)}>
+        ☰
+      </div>
 
-      {/* WHATSAPP */}
-      <a
-        href="https://wa.me/919837537847"
-        target="_blank"
-        style={{ ...btn, background: "#25D366" }}
-      >
-        💬
-      </a>
+      {/* SIDEBAR PANEL */}
+      {open && (
+        <div style={panel}>
 
-      {/* CALL */}
-      <a
-        href="tel:09837537847"
-        style={{ ...btn, background: "#0d6efd" }}
-      >
-        📞
-      </a>
+          <a
+            href="https://wa.me/919837537847"
+            target="_blank"
+            style={{ ...btn, background: "#25D366" }}
+          >
+            WhatsApp
+          </a>
 
-      {/* APPOINTMENT */}
-      <a
-        href="/appointment"
-        style={{ ...btn, background: "#ff4d4d" }}
-      >
-        🏥
-      </a>
+          <a
+            href="tel:09837537847"
+            style={{ ...btn, background: "#0d6efd" }}
+          >
+            Call
+          </a>
 
-    </div>
+          <a
+            href="/appointment"
+            style={{ ...btn, background: "#ff4d4d" }}
+          >
+            Appointment
+          </a>
+
+        </div>
+      )}
+    </>
   );
 }
 
 /* STYLES */
 
-const container = {
+const hamburger = {
   position: "fixed",
-  right: "15px",
-  top: "50%",
-  transform: "translateY(-50%)",
+  top: "20px",
+  right: "20px",
+  fontSize: "26px",
+  cursor: "pointer",
+  zIndex: 2000,
+  background: "#0d6efd",
+  color: "white",
+  padding: "8px 12px",
+  borderRadius: "8px"
+};
+
+const panel = {
+  position: "fixed",
+  top: 0,
+  right: 0,
+  height: "100%",
+  width: "220px",
+  background: "white",
+  boxShadow: "-5px 0 20px rgba(0,0,0,0.1)",
+  padding: "20px",
   display: "flex",
   flexDirection: "column",
-  gap: "12px",
-  zIndex: 1000
+  gap: "15px",
+  zIndex: 1500
 };
 
 const btn = {
-  width: "50px",
-  height: "50px",
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  padding: "12px",
   color: "white",
-  fontSize: "20px",
   textDecoration: "none",
-  boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-  transition: "0.3s",
-  cursor: "pointer"
+  borderRadius: "8px",
+  textAlign: "center"
 };
