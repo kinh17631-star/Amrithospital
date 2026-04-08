@@ -28,7 +28,7 @@ const container = {
   position: "relative",
   width: "100%",
   height: "90vh",
-  backgroundImage: "url('/hospital.jpg')",
+  backgroundImage: "url('/IMG_4525.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   display: "flex",
