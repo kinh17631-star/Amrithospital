@@ -6,39 +6,28 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* HAMBURGER BUTTON */}
       <div style={hamburger} onClick={() => setOpen(!open)}>
         ☰
       </div>
 
-      {/* SIDEBAR PANEL */}
-      {open && (
-        <div style={panel}>
+      <div style={{
+        ...panel,
+        right: open ? "0" : "-260px"
+      }}>
 
-          <a
-            href="https://wa.me/919837537847"
-            target="_blank"
-            style={{ ...btn, background: "#25D366" }}
-          >
-            WhatsApp
-          </a>
+        <a href="https://wa.me/919837537847" style={{ ...btn, background: "#25D366" }}>
+          WhatsApp
+        </a>
 
-          <a
-            href="tel:09837537847"
-            style={{ ...btn, background: "#0d6efd" }}
-          >
-            Call
-          </a>
+        <a href="tel:09837537847" style={{ ...btn, background: "#0d6efd" }}>
+          Call
+        </a>
 
-          <a
-            href="/appointment"
-            style={{ ...btn, background: "#ff4d4d" }}
-          >
-            Appointment
-          </a>
+        <a href="/appointment" style={{ ...btn, background: "#ff4d4d" }}>
+          Appointment
+        </a>
 
-        </div>
-      )}
+      </div>
     </>
   );
 }
@@ -61,16 +50,16 @@ const hamburger = {
 const panel = {
   position: "fixed",
   top: 0,
-  right: 0,
+  right: "-260px",
   height: "100%",
-  width: "220px",
+  width: "250px",
   background: "white",
   boxShadow: "-5px 0 20px rgba(0,0,0,0.1)",
   padding: "20px",
   display: "flex",
   flexDirection: "column",
   gap: "15px",
-  zIndex: 1500
+  transition: "0.4s ease"
 };
 
 const btn = {
@@ -78,5 +67,6 @@ const btn = {
   color: "white",
   textDecoration: "none",
   borderRadius: "8px",
-  textAlign: "center"
+  textAlign: "center",
+  transition: "0.3s"
 };
