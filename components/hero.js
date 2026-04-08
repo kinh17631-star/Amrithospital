@@ -2,12 +2,14 @@ export default function Hero() {
   return (
     <section style={container}>
 
+      <div style={overlay}></div>
+
       <div style={content}>
-        <h1 style={heading}>
+        <h1 className="slide-left" style={heading}>
           Your Health Is <br /> Our Top Priority
         </h1>
 
-        <p style={text}>
+        <p className="slide-right" style={text}>
           Advanced healthcare with expert doctors
         </p>
 
@@ -23,20 +25,29 @@ export default function Hero() {
 /* STYLES */
 
 const container = {
-  width: "100%",              // ✅ FIX
-  minHeight: "90vh",
+  position: "relative",
+  width: "100%",
+  height: "90vh",
+  backgroundImage: "url('/hospital.jpg')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
-  padding: "80px 20px",
-  background: "linear-gradient(135deg,#0d6efd,#4facfe)",
-  margin: "0"                 // ✅ FIX
+  justifyContent: "center"
+};
+
+const overlay = {
+  position: "absolute",
+  width: "100%",
+  height: "100%",
+  background: "rgba(0,0,0,0.5)"
 };
 
 const content = {
-  textAlign: "center",
+  position: "relative",
   color: "white",
-  maxWidth: "600px"
+  textAlign: "center",
+  zIndex: 2
 };
 
 const heading = {
@@ -52,6 +63,6 @@ const btn = {
   padding: "12px 25px",
   borderRadius: "10px",
   border: "none",
-  background: "white",
-  color: "#0d6efd"
+  background: "#0d6efd",
+  color: "white"
 };
