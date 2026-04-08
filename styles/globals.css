@@ -1,4 +1,42 @@
-/* FADE ANIMATION */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #111;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* BUTTON */
+button {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* SCROLL SMOOTH */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================= */
+/* 🔥 ANIMATIONS START */
+/* ========================= */
+
+/* FADE + SLIDE UP */
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -12,12 +50,34 @@
   }
 }
 
-/* CARD HOVER */
+/* CARD HOVER EFFECT */
 .card-hover {
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
+
+/* IMAGE HOVER */
+img {
+  transition: 0.3s;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* SIDEBAR BUTTON HOVER */
+.sidebar-btn {
+  transition: 0.3s;
+}
+
+.sidebar-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ========================= */
+/* 🔥 ANIMATIONS END */
+/* ========================= */
