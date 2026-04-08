@@ -5,6 +5,11 @@
   font-family: Arial, sans-serif;
 }
 
+html, body, #__next {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: #f5f7fb;
   color: #111;
@@ -27,16 +32,12 @@ button:hover {
   opacity: 0.9;
 }
 
-/* SCROLL SMOOTH */
+/* SMOOTH SCROLL */
 html {
   scroll-behavior: smooth;
 }
 
-/* ========================= */
-/* 🔥 ANIMATIONS START */
-/* ========================= */
-
-/* FADE + SLIDE UP */
+/* 🔥 ANIMATION */
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -50,7 +51,7 @@ html {
   }
 }
 
-/* CARD HOVER EFFECT */
+/* CARD HOVER */
 .card-hover {
   transition: all 0.3s ease;
 }
@@ -60,24 +61,9 @@ html {
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-/* IMAGE HOVER */
+/* IMAGE FIX */
 img {
-  transition: 0.3s;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-
-img:hover {
-  transform: scale(1.03);
-}
-
-/* SIDEBAR BUTTON HOVER */
-.sidebar-btn {
-  transition: 0.3s;
-}
-
-.sidebar-btn:hover {
-  transform: scale(1.1);
-}
-
-/* ========================= */
-/* 🔥 ANIMATIONS END */
-/* ========================= */
