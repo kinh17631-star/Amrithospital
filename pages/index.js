@@ -1,154 +1,282 @@
 import Head from "next/head";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Footer from "../components/footer";
 
-export default function Home() {
+// --- LIGHTWEIGHT ANIMATIONS (Heavy Spring aur Stagger hata diye) ---
+const fadeUp = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1, 
+    transition: { duration: 0.5, ease: "easeOut" } // Simple aur fast transition
+  }
+};
 
+export default function Home() {
   const services = [
-    "Cardiology",
-    "Neurology",
-    "Orthopedics",
-    "Pediatrics",
-    "Dental Care",
-    "Emergency Care"
+    { title: "Cardiology", icon: "❤️" },
+    { title: "Neurology", icon: "🧠" },
+    { title: "Orthopedics", icon: "🦴" },
+    { title: "Pediatrics", icon: "👶" },
+    { title: "Dental Care", icon: "🦷" },
+    { title: "Emergency Care", icon: "🚑" }
   ];
 
   const doctors = [
-    { name: "Dr. Amit Sharma", spec: "Cardiologist" },
-    { name: "Dr. Neha Verma", spec: "Neurologist" },
-    { name: "Dr. Raj Singh", spec: "Orthopedic Specialist" }
+    { name: "Dr. Amit Sharma", spec: "Cardiologist", id: "1" },
+    { name: "Dr. Neha Verma", spec: "Neurologist", id: "2" },
+    { name: "Dr. Raj Singh", spec: "Orthopedic Specialist", id: "3" }
   ];
 
   return (
-    <>
+    <div style={{ background: "#050b14", color: "#fff", minHeight: "100vh" }}>
       <Head>
-        <title>Amrit Hospital - Best Healthcare in Meerut</title>
+        <title>Demo Hospital | Future of Healthcare UI</title>
       </Head>
 
       <Navbar />
       <Sidebar />
 
-      {/* HERO */}
-      <section style={{
-        background: "linear-gradient(135deg,#0d6efd,#4facfe)",
-        color: "white",
-        padding: "90px 20px",
-        textAlign: "center"
-      }}>
-        <h1 style={{ fontSize: "42px" }}>
-          Your Health Is Our Top Priority
-        </h1>
-        <p>Advanced healthcare with expert doctors</p>
+      {/* HERO SECTION - CINEMATIC LOOK */}
+      <section style={heroSection}>
+        
+        {/* IMAGE OPTIMIZED FOR CHROME WITH UNOPTIMIZED FLAG */}
+        <Image
+          src="/IMG_4532.webp"
+          alt="Hospital Background"
+          fill
+          priority
+          unoptimized={true} // Vercel ka load time bachaane ke liye
+          style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }}
+        />
 
-        <a href="/appointment">
-          <button style={btnPrimary}>Book Appointment</button>
-        </a>
-      </section>
+        <div style={heroOverlay}></div>
+        
+        {/* STATIC GLOW - Continuous animation hata di taaki phone heat na ho */}
+        <div style={heroGlow}></div>
 
-      {/* STATS */}
-      <section style={{
-        padding: "60px 20px",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
-        gap: "20px"
-      }}>
-        {[
-          { title: "1000+", sub: "Patients Treated" },
-          { title: "85%", sub: "Recovery Rate" },
-          { title: "24/7", sub: "Emergency" },
-          { title: "50+", sub: "Doctors" }
-        ].map((item, i) => (
-          <div key={i} style={card}>
-            <h2>{item.title}</h2>
-            <p>{item.sub}</p>
+        <motion.div 
+          style={heroContent}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+        >
+          <span style={subHeading}>
+            MEERUT'S MOST ADVANCED MEDICAL CENTER
+          </span>
+          
+          <h1 style={heroTitle}>
+            Your Health, <br /> Our <span style={highlightText}>Commitment.</span>
+          </h1>
+
+          <p style={heroText}>
+            Welcome to <b>Demo Hospital</b>. Where world-class expertise meets cutting-edge technology 
+            on a mobile-first platform.
+          </p>
+
+          <div>
+            <a href="/appointment">
+              <button style={btnPrimary}>Start Priority Booking</button>
+            </a>
           </div>
-        ))}
+        </motion.div>
       </section>
 
-      {/* SERVICES */}
-      <section style={{ padding: "60px 20px" }}>
-        <h2 style={title}>Our Services</h2>
+      {/* STATS SECTION - GLASSMORPHISM CARDS */}
+      <section style={sectionPadding}>
+        <div style={statsGrid}>
+          {[
+            { t: "15,000+", s: "Patients Served" },
+            { t: "98.5%", s: "Success Rate" },
+            { t: "24/7", s: "Live Support" },
+            { t: "120+", s: "Expert Staff" }
+          ].map((item, i) => (
+            <motion.div 
+              key={i} 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              style={glassCard}
+            >
+              <h2 style={statTitle}>{item.t}</h2>
+              <p style={statSub}>{item.s}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-        <div style={grid}>
+      {/* SERVICES SECTION - MODERN GRID */}
+      <section style={{ ...sectionPadding, background: "#0a1320" }}>
+        <div style={{ textAlign: "center", marginBottom: "50px" }}>
+          <h2 style={sectionTitle}>Our Specializations</h2>
+          <div style={underline}></div>
+        </div>
+
+        <div style={servicesGrid}>
           {services.map((s, i) => (
-            <div key={i} style={card}>
-              <h3>{s}</h3>
-              <p>Advanced care for {s.toLowerCase()}</p>
-            </div>
+            <motion.div 
+              key={i} 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              style={serviceCard}
+            >
+              <div style={serviceIcon}>{s.icon}</div>
+              <h3 style={{ marginBottom: "10px" }}>{s.title}</h3>
+              <p style={{ color: "#888", fontSize: "14px" }}>
+                High-precision care for {s.title} patients at Demo Hospital.
+              </p>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* DOCTORS */}
-      <section style={{ padding: "60px 20px" }}>
-        <h2 style={title}>Our Doctors</h2>
+      {/* DOCTORS SECTION */}
+      <section style={sectionPadding}>
+        <div style={{ textAlign: "center", marginBottom: "50px" }}>
+          <h2 style={sectionTitle}>The Experts</h2>
+          <p style={{ color: "#888" }}>Consult with Meerut's top-rated medical professionals.</p>
+        </div>
 
-        <div style={grid}>
+        <div style={servicesGrid}>
           {doctors.map((doc, i) => (
-            <div key={i} style={card}>
-              <h3>{doc.name}</h3>
-              <p>{doc.spec}</p>
-            </div>
+            <motion.div 
+              key={i} 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              style={doctorCard}
+            >
+              <div style={docImgPlaceholder}>👨‍⚕️</div>
+              <h3 style={{ marginBottom: "5px" }}>{doc.name}</h3>
+              <p style={{ color: "#4facfe", fontWeight: "bold", fontSize: "14px" }}>{doc.spec}</p>
+              <a href="/appointment" style={smallLink}>Book Consultation →</a>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{
-        background: "#0d6efd",
-        color: "white",
-        textAlign: "center",
-        padding: "60px"
-      }}>
-        <h2>Book Appointment Today</h2>
+      {/* FINAL CTA - CALL TO ACTION */}
+      <section style={ctaSection}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          style={ctaBox}
+        >
+          <h2 style={{ fontSize: "32px", marginBottom: "15px" }}>Ready for a Consultation?</h2>
+          <p style={{ color: "#ccc", marginBottom: "30px" }}>
+            Skip the queue. Book your priority appointment now and experience luxury healthcare.
+          </p>
 
-        <a href="/appointment">
-          <button style={btnLight}>Schedule Now</button>
-        </a>
+          <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="/appointment">
+              <button style={btnPrimary}>Schedule Online</button>
+            </a>
+            <a href="tel:09837389977">
+              <button style={btnOutline}>Call 098373 89977</button>
+            </a>
+          </div>
+        </motion.div>
       </section>
 
-      {/* FOOTER */}
       <Footer />
-    </>
+    </div>
   );
 }
 
-/* STYLES */
+/* --- LIGHTWEIGHT STYLES --- */
 
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-  gap: "20px"
-};
+const sectionPadding = { padding: "100px 20px" };
 
-const card = {
-  background: "white",
-  padding: "20px",
-  borderRadius: "15px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
-};
-
-const title = {
+const heroSection = {
+  position: "relative",
+  height: "100vh",
+  backgroundColor: "#050b14",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   textAlign: "center",
-  marginBottom: "30px"
+  overflow: "hidden"
 };
+
+const heroOverlay = {
+  position: "absolute",
+  inset: 0,
+  background: "linear-gradient(to bottom, rgba(5, 11, 20, 0.9) 0%, rgba(5, 11, 20, 0.4) 50%, rgba(5, 11, 20, 0.9) 100%)",
+  zIndex: 1
+};
+
+const heroGlow = {
+  position: "absolute",
+  width: "500px",
+  height: "500px",
+  background: "rgba(13, 110, 253, 0.1)", // Color thoda halka kiya
+  filter: "blur(180px)",
+  zIndex: 1
+};
+
+const heroContent = { position: "relative", zIndex: 2, padding: "0 20px", maxWidth: "900px" };
+const subHeading = { color: "#4facfe", letterSpacing: "4px", fontSize: "12px", fontWeight: "bold", display: "block", marginBottom: "20px" };
+const heroTitle = { fontSize: "clamp(40px, 8vw, 80px)", fontWeight: "900", lineHeight: "1.1", marginBottom: "25px" };
+const highlightText = { background: "linear-gradient(90deg, #4facfe, #00f2fe)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" };
+const heroText = { fontSize: "clamp(16px, 2vw, 20px)", color: "#aaa", marginBottom: "40px", lineHeight: "1.6" };
+
+const statsGrid = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "25px", maxWidth: "1200px", margin: "0 auto" };
+
+const glassCard = {
+  background: "rgba(255, 255, 255, 0.05)",
+  padding: "40px 20px",
+  borderRadius: "24px",
+  border: "1px solid rgba(255, 255, 255, 0.1)",
+  textAlign: "center"
+};
+
+const statTitle = { color: "#4facfe", fontSize: "42px", fontWeight: "900", marginBottom: "5px" };
+const statSub = { color: "#888", fontSize: "14px", fontWeight: "bold", textTransform: "uppercase" };
+
+const sectionTitle = { fontSize: "36px", fontWeight: "900", marginBottom: "10px" };
+const underline = { width: "50px", height: "4px", background: "#4facfe", margin: "0 auto", borderRadius: "2px" };
+
+const grid = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px", maxWidth: "1200px", margin: "0 auto" };
+const servicesGrid = { ...grid };
+
+const serviceCard = { background: "rgba(255, 255, 255, 0.02)", padding: "40px 30px", borderRadius: "20px", border: "1px solid rgba(255, 255, 255, 0.05)" };
+const serviceIcon = { fontSize: "40px", marginBottom: "20px" };
+
+const doctorCard = { background: "#111b27", padding: "30px", borderRadius: "25px", textAlign: "center", border: "1px solid rgba(255, 255, 255, 0.05)" };
+const docImgPlaceholder = { width: "100px", height: "100px", background: "rgba(255,255,255,0.05)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px auto", fontSize: "40px" };
+
+const smallLink = { color: "#4facfe", textDecoration: "none", fontSize: "14px", fontWeight: "bold", marginTop: "15px", display: "inline-block" };
+
+const ctaSection = { padding: "100px 20px", background: "linear-gradient(180deg, #050b14 0%, #0d6efd 100%)" };
+const ctaBox = { maxWidth: "800px", margin: "0 auto", textAlign: "center" };
 
 const btnPrimary = {
-  padding: "12px 25px",
-  background: "white",
-  color: "#0d6efd",
-  borderRadius: "10px",
+  padding: "18px 45px",
+  background: "linear-gradient(90deg, #4facfe, #00f2fe)",
+  color: "#000",
+  borderRadius: "50px",
   border: "none",
-  cursor: "pointer"
+  cursor: "pointer",
+  fontSize: "16px",
+  fontWeight: "bold"
 };
 
-const btnLight = {
-  padding: "12px 25px",
-  background: "white",
-  color: "#0d6efd",
-  borderRadius: "10px",
-  border: "none",
-  marginTop: "15px",
-  cursor: "pointer"
+const btnOutline = {
+  padding: "18px 45px",
+  background: "transparent",
+  color: "#fff",
+  borderRadius: "50px",
+  border: "2px solid rgba(255,255,255,0.2)",
+  cursor: "pointer",
+  fontSize: "16px",
+  fontWeight: "bold"
 };
