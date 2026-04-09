@@ -5,13 +5,13 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import Footer from "../components/footer";
 
-// --- LIGHTWEIGHT ANIMATIONS (Heavy Spring aur Stagger hata diye) ---
+// --- LIGHTWEIGHT ANIMATIONS (Niche ke sections ke liye) ---
 const fadeUp = {
   hidden: { y: 20, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { duration: 0.5, ease: "easeOut" } // Simple aur fast transition
+    transition: { duration: 0.5, ease: "easeOut" } 
   }
 };
 
@@ -40,30 +40,24 @@ export default function Home() {
       <Navbar />
       <Sidebar />
 
-      {/* HERO SECTION - CINEMATIC LOOK */}
+      {/* HERO SECTION - INSTANT LOAD (Yahan se animation hata di gayi hai) */}
       <section style={heroSection}>
         
-        {/* IMAGE OPTIMIZED FOR CHROME WITH UNOPTIMIZED FLAG */}
+        {/* IMAGE OPTIMIZED FOR CHROME */}
         <Image
           src="/IMG_4532.webp"
           alt="Hospital Background"
           fill
           priority
-          unoptimized={true} // Vercel ka load time bachaane ke liye
+          unoptimized={true} 
           style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }}
         />
 
         <div style={heroOverlay}></div>
-        
-        {/* STATIC GLOW - Continuous animation hata di taaki phone heat na ho */}
         <div style={heroGlow}></div>
 
-        <motion.div 
-          style={heroContent}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-        >
+        {/* YAHAN SIMPLE div USE KIYA HAI TAAKI TURANT DIKHE */}
+        <div style={heroContent}>
           <span style={subHeading}>
             MEERUT'S MOST ADVANCED MEDICAL CENTER
           </span>
@@ -82,7 +76,7 @@ export default function Home() {
               <button style={btnPrimary}>Start Priority Booking</button>
             </a>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* STATS SECTION - GLASSMORPHISM CARDS */}
@@ -218,7 +212,7 @@ const heroGlow = {
   position: "absolute",
   width: "500px",
   height: "500px",
-  background: "rgba(13, 110, 253, 0.1)", // Color thoda halka kiya
+  background: "rgba(13, 110, 253, 0.1)", 
   filter: "blur(180px)",
   zIndex: 1
 };
