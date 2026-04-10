@@ -58,7 +58,7 @@ export default function footer() {
         <div>
           <h3>Contact</h3>
           <p>📍 NP 3/1, Ganga Nagar, Meerut</p>
-          <p>📞 098375 37847</p>
+          <p>📞 08650921106</p>
           <p>💬 WhatsApp Available</p>
         </div>
 
@@ -92,7 +92,7 @@ export default function footer() {
         paddingTop: "15px"
       }}>
         <p>© 2026 Amrit Hospital</p>
-        <p>Created by A.S Tech Foundation</p>
+        <p>Created by A.S Tech Solutions</p>
       </div>
 
     </footer>
